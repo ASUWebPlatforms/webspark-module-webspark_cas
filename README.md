@@ -1,4 +1,4 @@
-# WebSpark module
+# WebSpark CAS module
 
 The WebSpark CAS module contains functionality which allows the Elastic Crawler to bypass the CAS redirect and process the web pages successfully.
 
