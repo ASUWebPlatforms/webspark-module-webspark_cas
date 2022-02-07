@@ -15,7 +15,7 @@ class WebSparkCasSubscriber extends CasSubscriber {
    * {@inheritdoc}
    */
   public function handle(GetResponseEvent $event) {
-    if ($this->isElasticCrawlerRequest()) {
+    if ($this->isElasticCrawlerRequest() && !$this->isForcedPath()) {
       return;
     }
 
@@ -47,6 +47,20 @@ class WebSparkCasSubscriber extends CasSubscriber {
     }
 
     return FALSE;
+  }
+
+  /**
+   * Checks if the path is a forced login one.
+   *
+   * @see https://stackoverflow.com/a/61921662
+   *
+   * @return bool
+   *   The check result.
+   */
+  protected function isForcedPath() {
+    $r = new \ReflectionMethod(parent::class, 'handleForcedPath');
+    $r->setAccessible(TRUE);
+    return $r->invoke($this);
   }
 
 }
