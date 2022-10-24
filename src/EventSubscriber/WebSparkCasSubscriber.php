@@ -2,8 +2,8 @@
 
 namespace Drupal\webspark_cas\EventSubscriber;
 
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Drupal\cas\Subscriber\CasSubscriber;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Drupal\Core\Site\Settings;
 
 /**
@@ -14,7 +14,7 @@ class WebSparkCasSubscriber extends CasSubscriber {
   /**
    * {@inheritdoc}
    */
-  public function handle(GetResponseEvent $event) {
+  public function handle(RequestEvent $event) {
     if ($this->isElasticCrawlerRequest() && !$this->isForcedPath()) {
       return;
     }
