@@ -3,13 +3,13 @@
 namespace Drupal\webspark_cas\EventSubscriber;
 
 use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Drupal\cas\Subscriber\CasSubscriber;
+use Drupal\cas\Subscriber\CasRouteSubscriber;
 use Drupal\Core\Site\Settings;
 
 /**
  * WebSpark CAS event subscriber.
  */
-class WebSparkCasSubscriber extends CasSubscriber {
+class WebSparkCasSubscriber extends CasRouteSubscriber {
 
   /**
    * {@inheritdoc}
